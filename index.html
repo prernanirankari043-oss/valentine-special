@@ -5,111 +5,85 @@
 <title>Valentine 💖</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: 'Comic Sans MS', cursive;
-        background: #ffd6e7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-    }
+body {
+    margin: 0;
+    font-family: 'Comic Sans MS', cursive;
+    background: #ffd6e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-    .page {
-        text-align: center;
-        display: none;
-        animation: fadeIn 0.6s ease;
-    }
+.page {
+    display: none;
+    text-align: center;
+    animation: fade 0.5s ease;
+}
 
-    .active {
-        display: block;
-    }
+.active { display: block; }
 
-    h1 {
-        color: #ff4d88;
-    }
+h1 { color: #ff4d88; }
 
-    button {
-        background: #ff4d88;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 25px;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 20px;
-    }
+.slider {
+    width: 320px;
+    height: 65px;
+    background: white;
+    border-radius: 40px;
+    margin: 40px auto;
+    position: relative;
+}
 
-    button:hover {
-        background: #ff3377;
-    }
+.label {
+    position: absolute;
+    top: 22px;
+    font-weight: bold;
+    color: #ff4d88;
+}
 
-    /* Slider */
-    .slider-container {
-        margin-top: 40px;
-        position: relative;
-        width: 300px;
-        height: 60px;
-        background: white;
-        border-radius: 30px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.yes { left: 35px; }
+.no { right: 35px; }
 
-    .option {
-        position: absolute;
-        top: 18px;
-        font-weight: bold;
-        color: #ff4d88;
-    }
+.heart {
+    width: 55px;
+    height: 55px;
+    background: #ff4d88;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    left: 132px;
+    cursor: grab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 22px;
+    transition: 0.25s;
+}
 
-    .yes { left: 25px; }
-    .no { right: 25px; transition: 0.3s; }
+button {
+    background: #ff4d88;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+}
 
-    .heart {
-        position: absolute;
-        top: 8px;
-        left: 120px;
-        width: 45px;
-        height: 45px;
-        background: #ff4d88;
-        border-radius: 50%;
-        cursor: grab;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        font-size: 20px;
-        transition: 0.3s;
-    }
+@keyframes fade {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
 
-    /* Cute animations */
-    @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.9); }
-        to { opacity: 1; transform: scale(1); }
-    }
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
 
-    @keyframes bounce {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-        100% { transform: translateY(0); }
-    }
+.bounce { animation: bounce 1s infinite; }
 
-    .bounce {
-        animation: bounce 1s infinite;
-    }
-
-    .teddy {
-        font-size: 80px;
-        animation: bounce 1s infinite;
-    }
-
-    .love-text {
-        font-size: 24px;
-        color: #ff4d88;
-        animation: bounce 0.7s infinite;
-    }
+.teddy { font-size: 90px; animation: bounce 1s infinite; }
 </style>
 </head>
 
@@ -119,10 +93,10 @@
 <div class="page active" id="page1">
     <h1>Will u be my Valentine? 💖</h1>
 
-    <div class="slider-container">
-        <span class="option yes">YES 😊</span>
-        <span class="option no" id="noBtn">NO 😭</span>
-        <div class="heart" id="heart">💗</div>
+    <div class="slider" id="slider1">
+        <span class="label yes">YES 😊</span>
+        <span class="label no" id="no1">NO 😌</span>
+        <div class="heart" id="heart1">💗</div>
     </div>
 </div>
 
@@ -135,86 +109,70 @@
 <!-- PAGE 3 -->
 <div class="page" id="page3">
     <div class="teddy">🧸</div>
-    <div class="love-text">I love u so much my baby 💖</div>
+    <h1 class="bounce">I love u so much my baby 💖</h1>
     <button onclick="nextPage(4)">Next 💕</button>
 </div>
 
-<!-- MESSAGE PAGES -->
+<!-- MESSAGE -->
 <div class="page" id="page4">
     <h1>You make my world brighter 🌸</h1>
     <button onclick="nextPage(5)">Next 💕</button>
 </div>
 
 <div class="page" id="page5">
-    <h1>Every moment with you is special 💖</h1>
-    <button onclick="nextPage(6)">Next 💕</button>
+    <h1>No matter how much we fight I will always stay by side forever 💖</h1>
 </div>
 
 <div class="page" id="page6">
-    <h1>No matter how much we fight , just know I will never ever leave u my babyyyyy🥺💕</h1>
-    <button onclick="nextPage(7)">Next 💕</button>
+    <h1>Now you are responsible for all my tantrums and will have to take care of me and i will also take care of u 😌</h1>
 </div>
-
-  <div class="page" id="page7">
-    <h1>No matter how much we fight , just know I will never ever leave u my babyyyyy🥺💕</h1>
-    <button onclick="nextPage(8)">Next 💕</button>
-</div>
-
-    <div class="page" id="page8">
-    <h1>Please never stop loving ik I'm not perfect but I will try my best to change myself 😾</h1>
-      <button onclick="nextPage(9)">Next 💕</button>
-</div>
-      
-<!-- FINAL PAGE -->
-<div class="page" id="page9">
-    <h1>Will u be mine forever till we get old 👵💖</h1>
-
-    <div class="slider-container">
-        <span class="option yes">YES 💖</span>
-        <span class="option no" id="noBtn2">NO 😑</span>
-        <div class="heart" id="heart2">💗</div>
-    </div>
+<div class="page" id="page7">
+    <h1>I Loveeeeee ypuuuuuuuu soooooo much 🙈</h1>
 </div>
 
 <script>
-/* PAGE SWITCH */
-function nextPage(pageNumber) {
+function nextPage(num) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page' + pageNumber).classList.add('active');
+    document.getElementById('page' + num).classList.add('active');
 }
 
-/* DRAG HEART FUNCTION */
-function setupSlider(heartId, noId, yesTrigger) {
+/* PERFECT SLIDER */
+function sliderLogic(heartId, sliderId, noId, yesPage) {
     const heart = document.getElementById(heartId);
+    const slider = document.getElementById(sliderId);
     const noBtn = document.getElementById(noId);
+
     let dragging = false;
 
-    heart.onmousedown = () => dragging = true;
-    document.onmouseup = () => dragging = false;
+    heart.addEventListener('mousedown', () => dragging = true);
+    document.addEventListener('mouseup', () => dragging = false);
 
-    document.onmousemove = (e) => {
+    document.addEventListener('mousemove', (e) => {
         if (!dragging) return;
 
-        let x = e.clientX - heart.parentElement.getBoundingClientRect().left - 22;
-        x = Math.max(10, Math.min(245, x));
-        heart.style.left = x + "px";
+        const rect = slider.getBoundingClientRect();
+        let x = e.clientX - rect.left - 27;
 
-        if (x > 180) {
-            nextPage(yesTrigger);
+        x = Math.max(10, Math.min(255, x));
+        heart.style.left = x + 'px';
+
+        /* YES DETECTION — SUPER RELIABLE ✅ */
+        if (x > 200) {
+            heart.style.left = "255px"; // snap to yes
+            setTimeout(() => nextPage(yesPage), 200);
         }
-    };
+    });
 
-    /* RUNAWAY NO BUTTON 😌 */
-    noBtn.onmouseover = () => {
-        noBtn.style.top = Math.random() * 40 + "px";
-        noBtn.style.left = Math.random() * 240 + "px";
-    };
+    /* RUNAWAY NO 😌 */
+    noBtn.addEventListener('mouseover', () => {
+        noBtn.style.top = Math.random() * 35 + "px";
+        noBtn.style.left = Math.random() * 250 + "px";
+    });
 }
 
-/* SETUP BOTH SLIDERS */
-setupSlider("heart", "noBtn", 2);
-setupSlider("heart2", "noBtn2", 1);
+sliderLogic("heart1", "slider1", "no1", 2);
 </script>
 
 </body>
 </html>
+
