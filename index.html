@@ -26,40 +26,43 @@ body {
 h1 { color: #ff4d88; }
 
 .slider {
-    width: 320px;
-    height: 65px;
+    width: 340px;
+    height: 70px;
     background: white;
-    border-radius: 40px;
+    border-radius: 50px;
     margin: 40px auto;
     position: relative;
+    overflow: hidden;   /* ⭐ prevents collapsing */
 }
 
 .label {
     position: absolute;
-    top: 22px;
+    top: 25px;
     font-weight: bold;
     color: #ff4d88;
+    pointer-events: none;  /* ⭐ prevents interference */
 }
 
-.yes { left: 35px; }
-.no { right: 35px; }
+.yes { left: 40px; }
+.no { right: 40px; }
 
 .heart {
-    width: 55px;
-    height: 55px;
+    width: 60px;
+    height: 60px;
     background: #ff4d88;
     border-radius: 50%;
     position: absolute;
     top: 5px;
-    left: 132px;
+    left: 140px;
     cursor: grab;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 22px;
-    transition: 0.25s;
+    font-size: 24px;
+    z-index: 2;
 }
+
 
 button {
     background: #ff4d88;
@@ -95,7 +98,7 @@ button {
 
     <div class="slider" id="slider1">
         <span class="label yes">YES 😊</span>
-        <span class="label no" id="no1">NO 😌</span>
+        <span class="label no" id="no1">NO 🔪</span>
         <div class="heart" id="heart1">💗</div>
     </div>
 </div>
@@ -132,9 +135,9 @@ button {
 <div class="page" id="page7">
     <h1>Will u be mine forever till we get old 🥺💍💖</h1>
 
-    <div class="slider">
+    <div class="slider2">
         <span class="label yes">YES 💖</span>
-        <span class="label no" id="no2">NO 😌</span>
+        <span class="label no" id="no2">NO 🥲</span>
         <div class="heart" id="heart2">💗</div>
         <button onclick="nextPage(8)">Next 💕</button>
     </div>
@@ -152,42 +155,43 @@ function nextPage(num) {
 }
 
 /* PERFECT SLIDER */
-function sliderLogic(heartId, sliderId, noId, yesPage) {
+function sliderLogic(heartId, sliderId, yesPage) {
+
     const heart = document.getElementById(heartId);
     const slider = document.getElementById(sliderId);
-    const noBtn = document.getElementById(noId);
 
     let dragging = false;
 
-    heart.addEventListener('mousedown', () => dragging = true);
-    document.addEventListener('mouseup', () => dragging = false);
+    heart.addEventListener("mousedown", () => dragging = true);
+    document.addEventListener("mouseup", () => dragging = false);
 
-    document.addEventListener('mousemove', (e) => {
+    document.addEventListener("mousemove", (e) => {
         if (!dragging) return;
 
         const rect = slider.getBoundingClientRect();
-        let x = e.clientX - rect.left - 27;
 
-        x = Math.max(10, Math.min(255, x));
-        heart.style.left = x + 'px';
+        let x = e.clientX - rect.left - 30;
 
-        /* YES DETECTION — SUPER RELIABLE ✅ */
-        if (x > 200) {
-            heart.style.left = "255px"; // snap to yes
-            setTimeout(() => nextPage(yesPage), 200);
+        /* ⭐ PERFECT BOUNDS */
+        x = Math.max(5, Math.min(rect.width - 65, x));
+
+        heart.style.left = x + "px";
+
+        /* ⭐ YES DETECTION */
+        if (x > rect.width - 120) {
+            heart.style.left = (rect.width - 65) + "px";
+
+            setTimeout(() => {
+                nextPage(yesPage);
+            }, 150);
         }
-    });
-
-    /* RUNAWAY NO 😌 */
-    noBtn.addEventListener('mouseover', () => {
-        noBtn.style.top = Math.random() * 35 + "px";
-        noBtn.style.left = Math.random() * 250 + "px";
     });
 }
 
+/* APPLY */
+sliderLogic("heart1", "slider1", 2);
+sliderLogic("heart2", "slider2", 8);
 
-sliderLogic("heart1", "slider1", "no1", 2);
-sliderLogic("heart2", "slider1", "no2", 1);
 
 </script>
 
