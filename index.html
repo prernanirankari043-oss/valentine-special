@@ -121,14 +121,29 @@ button {
 
 <div class="page" id="page5">
     <h1>No matter how much we fight I will always stay by side forever 💖</h1>
+    <button onclick="nextPage(6)">Next 💕</button>
 </div>
 
 <div class="page" id="page6">
     <h1>Now you are responsible for all my tantrums and will have to take care of me and i will also take care of u 😌</h1>
+    <button onclick="nextPage(7)">Next 💕</button>
 </div>
+
 <div class="page" id="page7">
-    <h1>I Loveeeeee ypuuuuuuuu soooooo much 🙈</h1>
+    <h1>Will u be mine forever till we get old 🥺💍💖</h1>
+
+    <div class="slider">
+        <span class="label yes">YES 💖</span>
+        <span class="label no" id="no2">NO 😌</span>
+        <div class="heart" id="heart2">💗</div>
+        <button onclick="nextPage(8)">Next 💕</button>
+    </div>
 </div>
+
+    <div class="page" id="page8">
+    <h1>I Loveeeeee ypuuuuuuuu soooooo much 🙈 
+    And Happy valentine day 😘</h1>
+    </div>
 
 <script>
 function nextPage(num) {
@@ -170,7 +185,10 @@ function sliderLogic(heartId, sliderId, noId, yesPage) {
     });
 }
 
+
 sliderLogic("heart1", "slider1", "no1", 2);
+sliderLogic("heart2", "slider1", "no2", 1);
+
 </script>
 
 </body>
