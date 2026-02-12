@@ -1,94 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Valentine 💖</title>
+    <meta charset="UTF-8">
+    <title>Valentine 💖</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Comic Sans MS', cursive;
-    background: #ffd6e7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive;
+            background: #ffd6e7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.page {
-    display: none;
-    text-align: center;
-    animation: fade 0.5s ease;
-}
+        .page {
+            display: none;
+            text-align: center;
+            animation: fade 0.5s ease;
+        }
 
-.active { display: block; }
+        .active {
+            display: block;
+        }
 
-h1 { color: #ff4d88; }
+        h1 {
+            color: #ff4d88;
+        }
 
-.slider {
-    width: 340px;
-    height: 70px;
-    background: white;
-    border-radius: 50px;
-    margin: 40px auto;
-    position: relative;
-    overflow: hidden;   /* ⭐ prevents collapsing */
-}
+        button {
+            background: #ff4d88;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
 
-.label {
-    position: absolute;
-    top: 25px;
-    font-weight: bold;
-    color: #ff4d88;
-    pointer-events: none;  /* ⭐ prevents interference */
-}
+        .noBtn {
+            background: #ccc;
+            color: black;
+        }
 
-.yes { left: 40px; }
-.no { right: 40px; }
+        .teddy {
+            font-size: 90px;
+            animation: bounce 1s infinite;
+        }
 
-.heart {
-    width: 60px;
-    height: 60px;
-    background: #ff4d88;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;
-    left: 140px;
-    cursor: grab;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 24px;
-    z-index: 2;
-    transition: left 0.15s ease;
-}
+        @keyframes fade {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-
-button {
-    background: #ff4d88;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer;
-}
-
-@keyframes fade {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes bounce {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0); }
-}
-
-.bounce { animation: bounce 1s infinite; }
-
-.teddy { font-size: 90px; animation: bounce 1s infinite; }
-</style>
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
 </head>
 
 <body>
@@ -97,103 +69,63 @@ button {
 <div class="page active" id="page1">
     <h1>Will u be my Valentine? 💖</h1>
 
-    <div class="slider" id="slider1">
-        <span class="label yes">YES 😊</span>
-        <span class="label no" id="no1">NO 🔪</span>
-        <div class="heart" id="heart1">💗</div>
-    </div>
+    <button onclick="nextPage(2)">YES 💖</button>
+    <button class="noBtn" onclick="alert('Wrong answer 😌😂')">NO 😜</button>
 </div>
 
 <!-- PAGE 2 -->
 <div class="page" id="page2">
-    <h1 class="bounce">Ohhh this made me soooo happy 🥺💖</h1>
+    <h1>Ohhh this made me soooo happy 🥺💖</h1>
     <button onclick="nextPage(3)">Next 💕</button>
 </div>
 
 <!-- PAGE 3 -->
 <div class="page" id="page3">
     <div class="teddy">🧸</div>
-    <h1 class="bounce">I love u so much my baby 💖</h1>
+    <h1>I love u so much my baby 💖</h1>
     <button onclick="nextPage(4)">Next 💕</button>
 </div>
 
-<!-- MESSAGE -->
+<!-- PAGE 4 -->
 <div class="page" id="page4">
-    <h1>You make my world brighter 🌸</h1>
+    <h1>You make my world brighter ✨💖</h1>
     <button onclick="nextPage(5)">Next 💕</button>
 </div>
 
+<!-- PAGE 5 -->
 <div class="page" id="page5">
     <h1>No matter how much we fight I will always stay by side forever 💖</h1>
     <button onclick="nextPage(6)">Next 💕</button>
 </div>
 
+<!-- PAGE 6 -->
 <div class="page" id="page6">
-    <h1>Now you are responsible for all my tantrums and will have to take care of me and i will also take care of u 😌</h1>
+    <h1>Now you are responsible for all my tantrums 😌💖</h1>
     <button onclick="nextPage(7)">Next 💕</button>
 </div>
 
+<!-- PAGE 7 (Second Slider replaced) -->
 <div class="page" id="page7">
     <h1>Will u be mine forever till we get old 🥺💍💖</h1>
 
-    <div class="slider2">
-        <span class="label yes">YES 💖</span>
-        <span class="label no" id="no2">NO 🥲</span>
-        <div class="heart" id="heart2">💗</div>
-        <button onclick="nextPage(8)">Next 💕</button>
-    </div>
+    <button onclick="nextPage(8)">YES FOREVER 💖</button>
+    <button class="noBtn" onclick="alert('No option available 😌😂')">NO 😜</button>
 </div>
 
-    <div class="page" id="page8">
-    <h1>I Loveeeeee ypuuuuuuuu soooooo much 🙈 
-    And Happy valentine day 😘</h1>
-    </div>
+<!-- FINAL PAGE -->
+<div class="page" id="page8">
+    <h1>I Loveeeee youuuuuuuu soooo much chikneeeeeee 🥺💖</h1>
+    <h1>Happy Valentine’s Day mera sona babu muahhhhh 😘💖</h1>
+</div>
 
 <script>
-function nextPage(num) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById('page' + num).classList.add('active');
-}
+    function nextPage(num) {
+        document.querySelectorAll('.page')
+            .forEach(p => p.classList.remove('active'));
 
-/* PERFECT SLIDER */
-function sliderLogic(heartId, sliderId, yesPage) {
-
-    const heart = document.getElementById(heartId);
-    const slider = document.getElementById(sliderId);
-
-    let dragging = false;
-
-    heart.addEventListener("mousedown", () => dragging = true);
-    document.addEventListener("mouseup", () => dragging = false);
-
-    document.addEventListener("mousemove", (e) => {
-        if (!dragging) return;
-
-        const rect = slider.getBoundingClientRect();
-
-        let x = e.clientX - rect.left - 30;
-
-        /* ⭐ PERFECT BOUNDS */
-        x = Math.max(5, Math.min(rect.width - 65, x));
-
-        heart.style.left = x + "px";
-
-        /* ⭐ YES DETECTION */
-        if (x > rect.width - 120) {
-            heart.style.left = (rect.width - 65) + "px";
-
-            setTimeout(() => {
-                nextPage(yesPage);
-            }, 150);
-        }
-    });
-}
-
-/* APPLY */
-sliderLogic("heart1", "slider1", 2);
-sliderLogic("heart2", "slider2", 8);
-
-
+        document.getElementById('page' + num)
+            .classList.add('active');
+    }
 </script>
 
 </body>
